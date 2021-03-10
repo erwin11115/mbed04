@@ -2,20 +2,12 @@
 
 AnalogOut Aout(D7);
 AnalogIn Ain(A0);
-
-int sample = 128;
-int i;
-
-float ADCdata[128];
+float ADCdata;
 
 int main(){
-  for (i = 0; i < sample; i++){
-    Aout = Ain;
-    ADCdata[i] = Ain;
-    ThisThread::sleep_for(1000ms/sample);
-  }
-  for (i = 0; i < sample; i++){
-    printf("%f\r\n", ADCdata[i]);
-    ThisThread::sleep_for(100ms);
+  while(1){
+    ADCdata = Ain;
+    Aout = ADCdata;
+    ThisThread::sleep_for(2ms);
   }
 }
